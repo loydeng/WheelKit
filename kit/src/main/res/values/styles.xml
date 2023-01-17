@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--  横线视图   -->
+    <style name="horizontal_divide_line">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp0_5</item>
+        <item name="android:background">@color/grey2</item>
+        <item name="android:layout_marginLeft">@dimen/dp10</item>
+        <item name="android:layout_marginRight">@dimen/dp10</item>
+    </style>
+
+    <!--  纵线视图  -->
+    <style name="vertical_divide_line">
+        <item name="android:layout_width">@dimen/dp0_5</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/grey2</item>
+        <item name="android:layout_marginTop">@dimen/dp10</item>
+        <item name="android:layout_marginBottom">@dimen/dp10</item>
+    </style>
+
+
+</resources>

@@ -1,0 +1,76 @@
+plugins {
+    id 'com.android.library'
+}
+
+android {
+    ndkVersion "22.0.7026061"
+
+    compileSdk androidConfig.compileSdkVersion
+
+    defaultConfig {
+        minSdk    androidConfig.minSdkVersion
+        targetSdk androidConfig.targetSdkVersion
+        versionCode      androidConfig.versionCode
+        versionName      androidConfig.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+
+        externalNativeBuild {
+            cmake {
+                cppFlags ""
+                arguments ""
+            }
+        }
+
+        ndk {
+            abiFilters 'arm64-v8a' , 'armeabi-v7a'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true   //是否代码混淆
+            multiDexEnabled true //防止方法数量超过65536导致错误
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            consumerProguardFile 'proguard-rules.pro'
+        }
+        debug {
+            debuggable true     // 默认可调式
+            jniDebuggable true  // native 可调试
+            minifyEnabled false // 默认为 false
+        }
+    }
+
+    externalNativeBuild {
+        cmake {
+            path "src/main/cpp/CMakeLists.txt"
+            version "3.10.2"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    implementation Dependencies.rxjava
+    implementation Dependencies.rxandroid
+    implementation Dependencies.gson
+
+    // android 自带库
+    implementation Dependencies.appcompat
+    implementation Dependencies.material
+    implementation Dependencies.constraintlayout
+    implementation Dependencies.multidex
+    testImplementation Dependencies.jUnit
+    androidTestImplementation Dependencies.testRunner
+    androidTestImplementation Dependencies.testExtJunit
+    androidTestImplementation Dependencies.testEspresso
+}

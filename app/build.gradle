@@ -1,0 +1,93 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'me.ele.lancet'
+}
+
+android {
+    compileSdkVersion androidConfig.compileSdkVersion
+    buildToolsVersion androidConfig.buildToolsVersion
+
+    defaultConfig {
+        applicationId androidConfig.applicationId
+        minSdkVersion    androidConfig.minSdkVersion
+        targetSdkVersion androidConfig.targetSdkVersion
+        versionCode      androidConfig.versionCode
+        versionName      androidConfig.versionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        release {
+            //File file = new File()
+        }
+    }
+
+    buildTypes {
+        debug {
+            debuggable true     // 默认可调式
+            jniDebuggable true  // native 可调试
+            minifyEnabled false // 默认为 false
+        }
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    // 开启协程依赖
+    kotlin{
+        experimental {
+            coroutines 'enable'
+        }
+    }
+    provided Dependencies.lancet
+    implementation Dependencies.volley
+    implementation Dependencies.glide
+    implementation Dependencies.okhttp
+    implementation Dependencies.epic
+    implementation Dependencies.blockcanary
+    implementation Dependencies.anrwatchdog
+    implementation Dependencies.asynclayoutinflater
+    implementation Dependencies.x2c
+    annotationProcessor Dependencies.x2c_apt
+    implementation Dependencies.eventBus
+    implementation Dependencies.kotlin
+    implementation Dependencies.ktx
+
+    implementation Dependencies.kotlinCoroutines
+
+    implementation Dependencies.appcompat
+    implementation Dependencies.material
+    implementation Dependencies.constraintlayout
+    implementation Dependencies.navigationRuntime
+    implementation Dependencies.navigationFragment
+    implementation Dependencies.navigationUI
+
+    testImplementation Dependencies.jUnit
+    androidTestImplementation Dependencies.testRunner
+    androidTestImplementation Dependencies.testExtJunit
+    androidTestImplementation Dependencies.testEspresso
+
+    implementation project(":kit")
+}
