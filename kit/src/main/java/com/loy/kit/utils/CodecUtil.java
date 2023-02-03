@@ -749,7 +749,7 @@ public class CodecUtil {
                         }
                     }
                     fos.close()
-                    decoder.stop()
+                    decoder.Stop()
                     decoder.release()
                 }
 

@@ -15,7 +15,7 @@ public interface Constants {
         int LEVEL = Logger.D;
         String LOG_DIR = "log";
         String CRASH_DIR = "crash";
-        String LOG_PREFIX = "record";
+        String LOG_PREFIX = "Record";
         String CRASH_PREFIX = "crash";
         String LOG_FILE_EXTENSION = "log";
 

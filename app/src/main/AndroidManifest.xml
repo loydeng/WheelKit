@@ -13,7 +13,10 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
+            android:theme="@style/Theme.WheelKit.NoActionBar">
+        </activity>
+        <activity android:name=".SplashActivity"
+            android:exported="true"
             android:theme="@style/Theme.WheelKit.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,5 +25,6 @@
             </intent-filter>
         </activity>
     </application>
-
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
 </manifest>

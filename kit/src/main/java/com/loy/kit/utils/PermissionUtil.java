@@ -30,10 +30,11 @@ import java.util.List;
 public class PermissionUtil {
     public static final int SETTINGS_CODE = 0x666;
 
-    public static void request(FragmentActivity activity, Config config) {
-        if (activity == null || config == null) {
+    public static void request(FragmentActivity activity, PermissionResult callback, String ...permissions) {
+        if (activity == null) {
             return;
         }
+        Config config = new Config(callback, permissions);
         if (config.permissions == null || config.permissions.length == 0 ||
                 Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             config.mResult.onGranted();
@@ -88,14 +89,14 @@ public class PermissionUtil {
         void onDenied(List<String> deniedPermissions, List<String> justBlockedPermissions, List<String> blockedPermissions);
     }
 
-    public static class Config {
+    private static class Config {
         private final String[] permissions;
         private final PermissionResult mResult;
         private List<String> needRequestPermissions;
         private List<String> preDenyRequestPermissions;
         private String explanation;
 
-        public Config(String[] permissions, PermissionResult result) {
+        public Config(PermissionResult result, String ...permissions) {
             this.permissions = permissions;
             mResult = (result == null ? EmptyUtil.getEmptyImpl(PermissionResult.class) : result);
         }

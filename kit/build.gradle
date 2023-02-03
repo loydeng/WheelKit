@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    ndkVersion "22.0.7026061"
+    ndkVersion "22.1.7171670"
 
     compileSdk androidConfig.compileSdkVersion
 
@@ -18,13 +18,33 @@ android {
 
         externalNativeBuild {
             cmake {
-                cppFlags ""
-                arguments ""
+                cppFlags "-std=c++14"
+                arguments "-DANDROID_STL=c++_shared"
+                // Passes optional arguments to CMake.
+                // arguments "-DLIBWEBRTC_INCLUDE_PATH=" + WEBRTC_INC_PATH,
+                //        "-DLIBWEBRTC_BINARY_PATH=" + WEBRTC_LIB_PATH,
+                //        "-DMEDIASOUPCLIENT_BUILD_TESTS=false",
+                //        "-DSDPTRANSFORM_BUILD_TESTS=OFF",
+                //        "-DSDPTRANSFORM_BUILD_READMEHELPER=OFF",
+                //        "-DMEDIASOUPCLIENT_LOG_TRACE=ON",
+                //        "-DMEDIASOUPCLIENT_LOG_DEV=ON"
+                //      ,
+                //      "-DANDROID_STL=c++_shared"
+                //      "-DANDROID_STL=c++_static"
+                //      "-DANDROID_TOOLCHAIN=clang"
+
+                //cppFlags "-std=c++14",
+                //         "-stdlib=libc++"
+                //         "-stdlib=libstdc++"
+                //         "-Wno-error=format-security",
+                //         "-fpermissive",
+                //         "-fopenmp",
+                //         "-Og"
             }
         }
 
         ndk {
-            abiFilters 'arm64-v8a' , 'armeabi-v7a'
+            abiFilters 'arm64-v8a'
         }
     }
 
@@ -44,14 +64,15 @@ android {
 
     externalNativeBuild {
         cmake {
-            path "src/main/cpp/CMakeLists.txt"
-            version "3.10.2"
+            path "CMakeLists.txt"
+            version "3.22.1"
         }
     }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+        encoding "UTF-8"
     }
 
     lintOptions {

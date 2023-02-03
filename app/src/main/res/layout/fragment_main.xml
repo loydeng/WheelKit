@@ -36,6 +36,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/second"/>
+
+        <Button
+            android:id="@+id/button_play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="play"/>
+        <Button
+            android:id="@+id/button_stop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="stop"/>
+        <Button
+            android:id="@+id/button_record"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="record"/>
+        <Button
+            android:id="@+id/button_stop_record"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="stop_record"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

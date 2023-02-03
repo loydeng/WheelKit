@@ -8,7 +8,7 @@ import androidx.core.os.TraceCompat;
 /**
  * @author loyde
  * @des monitor app launcher by use startMonitor and stopMonitor, then generate app.trace that
- * can use Android Studio open it in profiler
+ * can use Android Studio Open it in profiler
  * @time 2022/12/2 16:49
  */
 public class LauncherMonitor {

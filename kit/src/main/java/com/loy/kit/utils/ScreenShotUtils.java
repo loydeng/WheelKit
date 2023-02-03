@@ -90,7 +90,7 @@ public class ScreenShotUtils {
                 @Override
                 public void onFrame(Bitmap bitmap) {
                     if (bitmap != null) {
-                        next.setValue(bitmap);
+                        Next.setValue(bitmap);
                         //renderer.removeFrameListener(this);
                         latch.countDown();
                     }

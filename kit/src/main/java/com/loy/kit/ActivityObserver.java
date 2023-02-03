@@ -19,8 +19,8 @@ class ActivityObserver implements Application.ActivityLifecycleCallbacks {
     private final TopActivityState mState;
 
     private static class TopActivityState{
-        private boolean isBackground; // stop
-        private boolean isCover;      // pause
+        private boolean isBackground; // Stop
+        private boolean isCover;      // Pause
         private boolean isActive;     // resume
 
         private void active() {

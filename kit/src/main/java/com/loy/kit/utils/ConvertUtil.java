@@ -8,12 +8,11 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.IntDef;
 import androidx.annotation.NonNull;
 
-import com.loy.kit.Utils;
-
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -35,7 +34,8 @@ public class ConvertUtil {
 
     public static <T> T[] list2Array(List<T> list) {
         if (list != null && list.size() > 0) {
-            return (T[]) list.toArray();
+            T[] array = (T[]) Array.newInstance(list.get(0).getClass(), list.size());
+            return list.toArray(array);
         } else {
             return null;
         }
@@ -75,14 +75,13 @@ public class ConvertUtil {
     /**
      * 将颜色值类型由 color-string 转换为 color-int.
      * color-string 可以是 rgb 或 argb, 格式: #RRGGBB 或 #AARRGGBB
-     *
      */
     public static int string2Int(@NonNull String colorString) {
         return Color.parseColor(colorString);
     }
 
     /**
-     *  将颜色值类型由 color-int 转换为 color-string(rgb)
+     * 将颜色值类型由 color-int 转换为 color-string(rgb)
      */
     public static String int2RgbString(@ColorInt int colorInt) {
         colorInt = colorInt & 0x00ffffff;

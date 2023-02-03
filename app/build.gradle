@@ -2,7 +2,6 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-android-extensions'
-    id 'me.ele.lancet'
 }
 
 android {
@@ -61,7 +60,6 @@ dependencies {
             coroutines 'enable'
         }
     }
-    provided Dependencies.lancet
     implementation Dependencies.volley
     implementation Dependencies.glide
     implementation Dependencies.okhttp
@@ -69,8 +67,7 @@ dependencies {
     implementation Dependencies.blockcanary
     implementation Dependencies.anrwatchdog
     implementation Dependencies.asynclayoutinflater
-    implementation Dependencies.x2c
-    annotationProcessor Dependencies.x2c_apt
+
     implementation Dependencies.eventBus
     implementation Dependencies.kotlin
     implementation Dependencies.ktx
