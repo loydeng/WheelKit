@@ -2,6 +2,7 @@ package com.loy.kit.utils;
 
 import android.content.Context;
 import android.os.Environment;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.StringDef;
@@ -12,6 +13,8 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * 提供获取 android app 各个目录的api
@@ -189,4 +192,24 @@ public class DirUtil {
         }
     }
 
+    // 创建一个用于存储 图片或视频的文件, 通过参数指定类型
+    public static File nameMediaFileCurrentTime(String extensionName) {
+        File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM), "WheelKit");
+
+        if (!mediaStorageDir.exists()) {
+            if (!mediaStorageDir.mkdirs()) {
+                Log.d("WheelKit", "failed to create directory");
+                return null;
+            }
+        }
+
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        File mediaFile;
+        if (EmptyUtil.isStringEmpty(extensionName)) {
+            mediaFile = new File(mediaStorageDir.getPath() + File.separator + timeStamp + ".file");
+        }else {
+            mediaFile = new File(mediaStorageDir.getPath() + File.separator + timeStamp + extensionName);
+        }
+        return mediaFile;
+    }
 }

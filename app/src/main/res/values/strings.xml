@@ -1,9 +1,15 @@
 <resources>
     <string name="app_name">WheelKit</string>
     <string name="action_settings">Settings</string>
+
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
+    <string name="main_fragment_label">Main Fragment</string>
+    <string name="log_fragment_label">Log Fragment</string>
+    <string name="camera_fragment_label">Camera Fragment</string>
+    <string name="camera1_fragment_label">Camera1 Fragment</string>
+    <string name="camera2_fragment_label">Camera2 Fragment</string>
+    <string name="camerax_fragment_label">CameraX Fragment</string>
+
     <string name="next">Next</string>
     <string name="previous">Previous</string>
     <string name="first">first</string>
@@ -11,7 +17,17 @@
 
     <string name="log">log</string>
 
+    <string name="camera">camera</string>
+
     <string name="hello_main_fragment">Hello main fragment</string>
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="camera1">Camera1</string>
+    <string name="camera2">Camera2</string>
+    <string name="camerax">CameraX</string>
+    <string name="capture">拍照</string>
+    <string name="record">录像</string>
+    <string name="stop">停止</string>
+    <string name="switcher">切换</string>
+
 </resources>

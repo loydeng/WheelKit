@@ -23,6 +23,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,9 +48,9 @@ public final class FileIOUtil {
 
     public static final char REV_SLASH = '\\';
 
-    public final static String FILE_EXTENSION_SEPARATOR = ".";
+    public static final String FILE_EXTENSION_SEPARATOR = ".";
 
-    private static final String DEFAULT_CHARSET = "UTF-8";
+    public static final String DEFAULT_CHARSET = "UTF-8";
 
     // 默认缓存字节数量 512 Kb
     private static int sBufferSize = 512 * 1024;
@@ -63,9 +64,6 @@ public final class FileIOUtil {
     public interface OnProgressUpdateListener {
         void onProgressUpdate(double progress);
     }
-
-    // 判断字符串是否为空或全部是空白字符
-
 
     // 由路径创建文件
     public static File getFileByPath(final String filePath) {
@@ -100,7 +98,7 @@ public final class FileIOUtil {
     // 获取文件的拓展名
     public static String getFileExtension(File file) {
         String extension = "";
-        if (isFileExist(file)) {
+        if (!isFileExist(file)) {
             return extension;
         }
 
@@ -147,15 +145,15 @@ public final class FileIOUtil {
         if (file == null) {
             return false;
         }
-        if (file.exists()) {// 存在则判断属性是否为文件
+        if (file.exists()) { // 存在则判断属性是否为文件
             return file.isFile();
         }
-        if (!checkFolderOrCreate(file.getParentFile())) {// 不存在则先创建父目录
+        if (!checkFolderOrCreate(file.getParentFile())) { // 不存在则先创建父目录
             return false;
         }
         // 下面的步骤可以省略, 只要父目录存在, 本文件不存在时输出流会自动创建文件并写入数据
         try {
-            return file.createNewFile();// 创建新的空文件
+            return file.createNewFile(); // 创建新的空文件
         } catch (IOException e) {
             e.printStackTrace();
             return false;
@@ -181,7 +179,7 @@ public final class FileIOUtil {
             return true;
         }
 
-        if (file.isFile()) {//独立文件直接删除
+        if (file.isFile()) { //独立文件直接删除
             return file.delete();
         }
 
@@ -326,6 +324,26 @@ public final class FileIOUtil {
         }
     }
 
+    public static boolean writeFile(File file, ByteBuffer buffer, boolean append) {
+        if (buffer == null || !checkFileOrCreate(file)) {
+            SdkLog.e("FileIOUtils", "create file <" + file + "> failed.");
+            return false;
+        }
+        FileOutputStream o = null;
+        try {
+            o = new FileOutputStream(file, append);
+            o.getChannel().write(buffer);
+            return true;
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException("FileNotFoundException occurred. ", e);
+        } catch (IOException e) {
+            throw new RuntimeException("IOException occurred. ", e);
+        } finally {
+            CloseUtil.closeIO(o);
+            buffer.clear();
+        }
+    }
+
     public static boolean writeStringToFile(File file, String str) {
         OutputStreamWriter osw = null;
         try {
@@ -451,7 +469,7 @@ public final class FileIOUtil {
         if (file == null || !file.isFile()) {
             return null;
         }
-        List<String> fileContent = new ArrayList<String>();
+        List<String> fileContent = new ArrayList<>();
         BufferedReader reader = null;
         try {
             InputStreamReader is = new InputStreamReader(new FileInputStream(file),

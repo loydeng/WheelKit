@@ -8,8 +8,8 @@
 
 //#define __STDC_CONSTANT_MACROS
 extern "C" {
-#include "libavformat/avformat.h"
-#include "libavcodec/avcodec.h"
+#include "ffmpeg/libavformat/avformat.h"
+#include "ffmpeg/libavcodec/avcodec.h"
 }
 
 #define STREAM_DURATION(stream) stream->duration * av_q2d(stream->time_base)
@@ -28,6 +28,10 @@ public:
     int ReadData(AVPacket *&packet);
 
     bool ResetPosition();
+
+    bool ReCreateCodecCtx();
+
+    bool SeekTo(long long milliSecond, int streamIndex=-1);
 
     AVFormatContext *GetInputFmtCtx() const;
 
@@ -66,6 +70,7 @@ private:
     AVCodecContext *audioCodecCtx{nullptr};
     AVCodecContext *videoCodecCtx{nullptr};
     long long duration{0};
+    pthread_mutex_t mutex{};
 };
 
 

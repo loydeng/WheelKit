@@ -19,7 +19,7 @@ android {
         externalNativeBuild {
             cmake {
                 cppFlags "-std=c++14"
-                arguments "-DANDROID_STL=c++_shared"
+                arguments "-DANDROID_STL=c++_shared","-DANDROID_TOOLCHAIN=clang"
                 // Passes optional arguments to CMake.
                 // arguments "-DLIBWEBRTC_INCLUDE_PATH=" + WEBRTC_INC_PATH,
                 //        "-DLIBWEBRTC_BINARY_PATH=" + WEBRTC_LIB_PATH,
@@ -31,7 +31,6 @@ android {
                 //      ,
                 //      "-DANDROID_STL=c++_shared"
                 //      "-DANDROID_STL=c++_static"
-                //      "-DANDROID_TOOLCHAIN=clang"
 
                 //cppFlags "-std=c++14",
                 //         "-stdlib=libc++"
@@ -90,6 +89,8 @@ dependencies {
     implementation Dependencies.material
     implementation Dependencies.constraintlayout
     implementation Dependencies.multidex
+    implementation Dependencies.exif
+
     testImplementation Dependencies.jUnit
     androidTestImplementation Dependencies.testRunner
     androidTestImplementation Dependencies.testExtJunit

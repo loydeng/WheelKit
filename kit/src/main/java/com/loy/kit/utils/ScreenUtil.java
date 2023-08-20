@@ -54,8 +54,7 @@ public class ScreenUtil {
     }
 
     public static boolean isPortrait() {
-        return Utils.getAppContext().getResources().getConfiguration().orientation
-                == Configuration.ORIENTATION_PORTRAIT;
+        return Utils.getAppContext().getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT;
     }
 
     public static int getScreenRotation(@NonNull final Activity activity) {

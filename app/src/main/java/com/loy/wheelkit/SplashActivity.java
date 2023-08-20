@@ -36,6 +36,6 @@ public class SplashActivity extends AppCompatActivity {
                             System.exit(1);
                         }, 2000);
                     }
-                }, Manifest.permission.WRITE_EXTERNAL_STORAGE,  Manifest.permission.RECORD_AUDIO);
+                }, Manifest.permission.WRITE_EXTERNAL_STORAGE,  Manifest.permission.RECORD_AUDIO, Manifest.permission.CAMERA);
     }
 }

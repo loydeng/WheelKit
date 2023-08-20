@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--
+       在提供器定义的元数据部分中，您可以看到提供器需要在专用资源文件 res/xml/file_paths.xml 中配置符合条件的路径。
+       下面显示了此特定示例所需的内容：请务必将 com.example.package.name 替换为应用的实际软件包名称。
+        <?xml version="1.0" encoding="utf-8"?>
+        <paths xmlns:android="http://schemas.android.com/apk/res/android">
+            <external-files-path name="my_images" path="Android/data/com.example.package.name/files/Pictures" />
+        </paths>
+
+        除 external-path 之外，还可以使用如下路径。
+        // <files-path/>            <->   Context.getFilesDir()
+        // <cache-path/>            <->   Context.getCacheDir()
+        // <external-path/>         <->   Environment.getExternalStorageDirectory()
+        // <external-files-path/>   <->   Context.getExternalFilesDir(String)
+        // <external-cache-path/>   <->   Context.getExternalCacheDir()
+        // <external-media-path/>   <->   Context.getExternalMediaDirs()
+    -->
+    <external-files-path name="my_images" path="Android/data/com.loy.wheelkit/files/Pictures" />
+</paths>

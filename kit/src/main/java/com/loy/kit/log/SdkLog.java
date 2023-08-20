@@ -76,6 +76,16 @@ public class SdkLog {
         }
     }
 
+    public static void printErrorStack(String tag, String msg, Throwable throwable) {
+        String stackTraceString = Log.getStackTraceString(throwable);
+        e(tag, msg, stackTraceString);
+    }
+
+    public static void printErrorStack(String msg, Throwable throwable) {
+        String stackTraceString = Log.getStackTraceString(throwable);
+        e(msg + '\n' + stackTraceString);
+    }
+
     public static void printErrorStack(Throwable th) {
         String stackTraceString = Log.getStackTraceString(th);
         e(stackTraceString);

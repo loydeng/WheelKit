@@ -76,8 +76,8 @@ public abstract class BaseItem<T extends BaseItem> {
     private final int viewType;
     BaseAdapter<T> mAdapter;
 
-    private OnItemClickListener<T>     mOnItemClickListener;
-    private OnItemLongClickListener<T> mOnItemLongClickListener;
+    protected OnItemClickListener<T>     mOnItemClickListener;
+    protected OnItemLongClickListener<T> mOnItemLongClickListener;
 
     public BaseItem(@LayoutRes int layoutId) {
         viewType = getViewTypeByLayoutId(layoutId);

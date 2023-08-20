@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable;
 
 import androidx.annotation.RawRes;
 import androidx.annotation.StringRes;
+import androidx.core.content.res.ResourcesCompat;
 
 import com.loy.kit.Utils;
 
@@ -38,7 +39,7 @@ public final class ResourceUtil {
     }
 
     public static Drawable getDrawable(int resId) {
-        return Utils.getAppContext().getResources().getDrawable(resId);
+        return ResourcesCompat.getDrawable(Utils.getAppContext().getResources(), resId, null);
     }
 
     // 获取asset资源文件流, 有子目录时, 需要带上子目录

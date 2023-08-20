@@ -1849,7 +1849,7 @@ public final class ImageUtils {
             return ImageType.TYPE_TIFF;
         } else if (type.contains("424D")) {
             return ImageType.TYPE_BMP;
-        } else if (type.startsWith("52494646") && type.endsWith("57454250")) {//524946461c57000057454250-12个字节
+        } else if (type.startsWith("52494646") && type.endsWith("57454250")) { // 52494646 1c570000 57454250 -12个字节
             return ImageType.TYPE_WEBP;
         } else if (type.contains("00000100") || type.contains("00000200")) {
             return ImageType.TYPE_ICO;

@@ -11,12 +11,16 @@ import com.loy.kit.log.core.Logger;
 public interface Constants {
     interface Log {
         String GLOBlE_TAG = "kit-logger";
+
         @Level
         int LEVEL = Logger.D;
+
         String LOG_DIR = "log";
         String CRASH_DIR = "crash";
-        String LOG_PREFIX = "Record";
+
+        String LOG_PREFIX = "record";
         String CRASH_PREFIX = "crash";
+
         String LOG_FILE_EXTENSION = "log";
 
         int STACK_TRACE_DEPTH = 5;
@@ -24,7 +28,8 @@ public interface Constants {
         // 系统日志打印最大长度限制为4K, 超出部分不会打印, 这个作为分段输出的日志单元大小
         int MAX_LEN = 1024 * 3;
 
-        String UPLOAD_URL = ""; // TODO 默认上传地址
+        //TODO 日志上传地址
+        String UPLOAD_URL = "";
     }
 
     interface Location{
