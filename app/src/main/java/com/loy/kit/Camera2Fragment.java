@@ -1,7 +1,5 @@
-package com.loy.wheelkit;
+package com.loy.kit;
 
-import android.hardware.Camera;
-import android.media.CamcorderProfile;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,9 +15,7 @@ import com.loy.kit.media.capture.camrea.CameraHelper;
 import com.loy.kit.media.capture.camrea.bean.Error;
 import com.loy.kit.media.capture.camrea.bean.Profile;
 import com.loy.kit.media.capture.camrea.bean.SensorInfo;
-
-import com.loy.kit.utils.DirUtil;
-import com.loy.wheelkit.databinding.FragmentCamera1Binding;
+import com.loy.app.databinding.FragmentCamera2Binding;
 
 import java.util.List;
 
@@ -28,19 +24,18 @@ import java.util.List;
  * @tiem 2023/2/26 12:01
  * @des
  */
-public class Camera1Fragment extends Fragment implements View.OnClickListener {
-    private FragmentCamera1Binding mBinding;
+public class Camera2Fragment extends Fragment implements View.OnClickListener{
+    private FragmentCamera2Binding mBinding;
     private CameraClient cameraClient;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mBinding = FragmentCamera1Binding.inflate(inflater, container, false);
+        mBinding = FragmentCamera2Binding.inflate(inflater, container, false);
         mBinding.capture.setOnClickListener(this);
         mBinding.record.setOnClickListener(this);
         mBinding.switcher.setOnClickListener(this);
-
-        cameraClient = new CameraClient(this.getContext(), CameraClient.API.Camera);
+        cameraClient = new CameraClient(this.getContext(), CameraClient.API.Camera2);
         cameraClient.querySensorInfo(new CameraClient.Callback<List<SensorInfo>>() {
             @Override
             public void onSuccess(List<SensorInfo> result) {
@@ -61,7 +56,6 @@ public class Camera1Fragment extends Fragment implements View.OnClickListener {
         });
         return mBinding.getRoot();
     }
-
     @Override
     public void onDestroyView() {
         super.onDestroyView();

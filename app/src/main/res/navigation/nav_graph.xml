@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/MainFragment"
-        android:name="com.loy.wheelkit.MainFragment"
+        android:name="com.loy.kit.MainFragment"
         android:label="@string/main_fragment_label"
         app:defaultNavHost="true"
         tools:layout="@layout/fragment_main">
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/LogFragment"
-        android:name="com.loy.wheelkit.LogFragment"
+        android:name="com.loy.kit.LogFragment"
         android:label="@string/log_fragment_label"
         tools:layout="@layout/fragment_log">
 
@@ -39,7 +39,7 @@
 
     <fragment
         android:id="@+id/CameraFragment"
-        android:name="com.loy.wheelkit.CameraFragment"
+        android:name="com.loy.kit.CameraFragment"
         android:label="@string/camera_fragment_label"
         tools:layout="@layout/fragment_camera">
 
@@ -68,21 +68,21 @@
 
     <fragment
         android:id="@+id/Camera1Fragment"
-        android:name="com.loy.wheelkit.Camera1Fragment"
+        android:name="com.loy.kit.Camera1Fragment"
         android:label="@string/camera1_fragment_label"
         tools:layout="@layout/fragment_camera">
     </fragment>
 
     <fragment
         android:id="@+id/Camera2Fragment"
-        android:name="com.loy.wheelkit.Camera2Fragment"
+        android:name="com.loy.kit.Camera2Fragment"
         android:label="@string/camera2_fragment_label"
         tools:layout="@layout/fragment_camera">
     </fragment>
 
     <fragment
         android:id="@+id/CameraXFragment"
-        android:name="com.loy.wheelkit.CameraXFragment"
+        android:name="com.loy.kit.CameraXFragment"
         android:label="@string/camerax_fragment_label"
         tools:layout="@layout/fragment_camera">
     </fragment>

@@ -1,4 +1,4 @@
-package com.loy.wheelkit;
+package com.loy.kit;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,7 +8,8 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
-import com.loy.wheelkit.databinding.FragmentCameraBinding;
+import com.loy.app.databinding.FragmentCameraBinding;
+import com.loy.app.R;
 
 public class CameraFragment extends Fragment {
 

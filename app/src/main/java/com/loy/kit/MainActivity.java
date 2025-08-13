@@ -1,6 +1,5 @@
-package com.loy.wheelkit;
+package com.loy.kit;
 
-import android.os.Build;
 import android.os.Bundle;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -14,7 +13,8 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import com.loy.wheelkit.databinding.ActivityMainBinding;
+import com.loy.app.databinding.ActivityMainBinding;
+import com.loy.app.R;
 
 public class MainActivity extends AppCompatActivity {
 

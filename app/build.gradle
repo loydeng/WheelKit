@@ -1,20 +1,16 @@
 plugins {
-    id 'com.android.application'
-    id 'kotlin-android'
-    id 'kotlin-android-extensions'
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.jetbrains.kotlin.android)
 }
 
-android {
-    compileSdkVersion androidConfig.compileSdkVersion
-    buildToolsVersion androidConfig.buildToolsVersion
+apply from: "../common.gradle"
+
+android { // package="com.loy.kit"
+    namespace libs.versions.app.namespace.get()
+
 
     defaultConfig {
-        applicationId androidConfig.applicationId
-        minSdkVersion    androidConfig.minSdkVersion
-        targetSdkVersion androidConfig.targetSdkVersion
-        versionCode      androidConfig.versionCode
-        versionName      androidConfig.versionName
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        applicationId    libs.versions.applicationId.get()
     }
 
     signingConfigs {
@@ -24,20 +20,10 @@ android {
     }
 
     buildTypes {
-        debug {
-            debuggable true     // 默认可调式
-            jniDebuggable true  // native 可调试
-            minifyEnabled false // 默认为 false
-        }
         release {
-            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
         }
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     kotlinOptions {
@@ -47,44 +33,34 @@ android {
     buildFeatures {
         viewBinding true
     }
-
-    lintOptions {
-        abortOnError false
-    }
 }
 
 dependencies {
-    // 开启协程依赖
-    kotlin{
-        experimental {
-            coroutines 'enable'
-        }
-    }
-    implementation Dependencies.volley
-    implementation Dependencies.glide
-    implementation Dependencies.okhttp
-    implementation Dependencies.epic
-    implementation Dependencies.blockcanary
-    implementation Dependencies.anrwatchdog
-    implementation Dependencies.asynclayoutinflater
 
-    implementation Dependencies.eventBus
-    implementation Dependencies.kotlin
-    implementation Dependencies.ktx
+    implementation libs.volley
+    implementation libs.glide
+    implementation libs.okhttp
+    implementation libs.epic
+    implementation libs.blockcanary
+    implementation libs.anrwatchdog
+    implementation libs.asynclayoutinflater
+    implementation libs.eventbus
 
-    implementation Dependencies.kotlinCoroutines
+    implementation libs.kotlin
+    implementation libs.coroutines
+    implementation libs.ktx
 
-    implementation Dependencies.appcompat
-    implementation Dependencies.material
-    implementation Dependencies.constraintlayout
-    implementation Dependencies.navigationRuntime
-    implementation Dependencies.navigationFragment
-    implementation Dependencies.navigationUI
+    implementation libs.appcompat
+    implementation libs.material
+    implementation libs.constraintlayout
+    implementation libs.navigationRuntime
+    implementation libs.navigationFragment
+    implementation libs.navigationUI
 
-    testImplementation Dependencies.jUnit
-    androidTestImplementation Dependencies.testRunner
-    androidTestImplementation Dependencies.testExtJunit
-    androidTestImplementation Dependencies.testEspresso
+    testImplementation libs.test.junit
+    androidTestImplementation libs.test.runner
+    androidTestImplementation libs.test.junit.ext
+    androidTestImplementation libs.test.espresso
 
     implementation project(":kit")
 }

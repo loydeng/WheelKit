@@ -1,4 +1,4 @@
-package com.loy.wheelkit;
+package com.loy.kit;
 
 import android.os.Bundle;
 import android.view.Gravity;
@@ -17,7 +17,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.loy.kit.widgets.recyclerview.BaseAdapter;
 import com.loy.kit.widgets.recyclerview.BaseItem;
 import com.loy.kit.widgets.recyclerview.BaseViewHolder;
-import com.loy.wheelkit.databinding.FragmentMainBinding;
+import com.loy.app.databinding.FragmentMainBinding;
+import com.loy.app.R;
 
 import java.util.ArrayList;
 import java.util.List;

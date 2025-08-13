@@ -1,19 +1,15 @@
 plugins {
-    id 'com.android.library'
+    alias(libs.plugins.android.library)
+//    id 'com.android.library'
 }
+
+apply from: "../common.gradle"
 
 android {
     ndkVersion "22.1.7171670"
-
-    compileSdk androidConfig.compileSdkVersion
+    namespace libs.versions.kit.namespace.get()
 
     defaultConfig {
-        minSdk    androidConfig.minSdkVersion
-        targetSdk androidConfig.targetSdkVersion
-        versionCode      androidConfig.versionCode
-        versionName      androidConfig.versionName
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
 
         externalNativeBuild {
@@ -49,15 +45,8 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled true   //是否代码混淆
-            multiDexEnabled true //防止方法数量超过65536导致错误
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             consumerProguardFile 'proguard-rules.pro'
-        }
-        debug {
-            debuggable true     // 默认可调式
-            jniDebuggable true  // native 可调试
-            minifyEnabled false // 默认为 false
         }
     }
 
@@ -67,32 +56,22 @@ android {
             version "3.22.1"
         }
     }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-        encoding "UTF-8"
-    }
-
-    lintOptions {
-        abortOnError false
-    }
 }
 
 dependencies {
-    implementation Dependencies.rxjava
-    implementation Dependencies.rxandroid
-    implementation Dependencies.gson
+    implementation libs.rxjava2
+    implementation libs.rxjava2Android
+    implementation libs.gson
 
     // android 自带库
-    implementation Dependencies.appcompat
-    implementation Dependencies.material
-    implementation Dependencies.constraintlayout
-    implementation Dependencies.multidex
-    implementation Dependencies.exif
+    implementation libs.appcompat
+    implementation libs.material
+    implementation libs.constraintlayout
+    implementation libs.multidex
+    implementation libs.exifinterface
 
-    testImplementation Dependencies.jUnit
-    androidTestImplementation Dependencies.testRunner
-    androidTestImplementation Dependencies.testExtJunit
-    androidTestImplementation Dependencies.testEspresso
+    testImplementation libs.test.junit
+    androidTestImplementation libs.test.junit.ext
+    androidTestImplementation libs.test.runner
+    androidTestImplementation libs.test.espresso
 }

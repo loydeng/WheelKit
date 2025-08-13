@@ -1,0 +1,153 @@
+
+# libs.versions.toml
+# gradle/libs.versions.toml
+
+[versions]
+# AGP 版本
+agp = "8.6.0"
+# kotlin 版本
+kotlinPlugin = "1.9.0"
+
+# okhttp
+okhttp = "3.14.9"
+# retrofit
+retrofit = "2.9.0"
+# glide
+glide = "3.7.0"
+
+# jetpack
+lifecycle = "2.2.0"
+navigation = "2.3.0"
+room = "2.2.0"
+paging = "2.1.2"
+camera = "1.4.2"
+
+# Android 构建参数
+androidCompileSdk = "35"
+androidBuildSdk = "35.0.0"
+androidMinSdk = "21"
+androidTargetSdk = "29"
+appVersionCode = "1"
+appVersionName = "V1.0.0"
+test-android-runner = "androidx.test.runner.AndroidJUnitRunner"
+
+# app 包信息
+kit-namespace = "com.loy.kit"
+applicationId = "com.loy.kit"
+app-namespace = "com.loy.app"
+
+
+[plugins]    # 插件定义
+android-application = { id = "com.android.application", version.ref = "agp" }
+android-library = { id = "com.android.library", version.ref = "agp" }
+
+jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlinPlugin" }
+
+
+[libraries]  # 依赖库定义
+
+# kotlin
+kotlin = { module = "org.jetbrains.kotlin:kotlin-stdlib", version = "1.9.22" }
+coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android" , version = "1.7.3" }
+ktx = { group = "androidx.core", name = "core-ktx", version = "1.15.0" }
+
+# test
+test-junit = { module = "junit:junit", version = "4.13.2" }
+test-junit-ext = { module = "androidx.test.ext:junit", version = "1.2.1" }
+test-runner = { module = "androidx.test:runner", version = "1.2.1" }
+test-espresso = { module = "androidx.test.espresso:espresso-core", version = "3.4.0" }
+
+# androidx
+appcompat = { module = "androidx.appcompat:appcompat", version = "1.2.0" }
+constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version = "2.0.4" }
+recyclerview = { module = "androidx.recyclerview:recyclerview", version = "1.1.0" }
+material = { module = "com.google.android.material:material", version = "1.2.1" }
+multidex = { module = "androidx.multidex:multidex", version = "2.0.1" }
+exifinterface = { module = "androidx.exifinterface:exifinterface", version = "1.3.6" }
+
+# lifecycle
+lifecycleRuntime = { module = "androidx.lifecycle:lifecycle-runtime", version.ref = "lifecycle" }
+lifecycleCommon = { module = "androidx.lifecycle:lifecycle-common-java8", version.ref = "lifecycle" }
+lifecycleViewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel", version.ref = "lifecycle" }
+lifecycleLivedata = { module = "androidx.lifecycle:lifecycle-livedata", version.ref = "lifecycle" }
+lifecycleEx = { module = "androidx.lifecycle:lifecycle-extensions", version.ref = "lifecycle" }
+
+lifecycleRuntimeKtx =  { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycle" }
+
+lifecycleExtensions = { module = "ndroid.arch.lifecycle:extensions" , version.ref = "lifecycle"}
+lifecycleCompiler = { module = "android.arch.lifecycle:compiler" , version.ref = "lifecycle" }
+
+# navigation
+navigationRuntime = { module = "androidx.navigation:navigation-runtime", version.ref = "navigation" }
+navigationFragment = { module = "androidx.navigation:navigation-fragment" , version.ref = "navigation"}
+navigationCommon = { module = "androidx.navigation:navigation-common" , version.ref = "navigation" }
+navigationUI = { module = "androidx.navigation:navigation-ui" , version.ref = "navigation" }
+
+# room
+room = { module = "androidx.room:room-runtime", version.ref = "room" }
+roomCompiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+
+# paging
+pagingRuntime = { module = "androidx.paging:paging-runtime" , version.ref = "paging" }
+pagingCommon = { module = "androidx.paging:paging-common" , version.ref = "paging" }
+pagingRxjava = { module = "androidx.paging:paging-rxjava2" , version.ref = "paging" }
+
+# camera
+cameraCore = { module = "androidx.camera:camera-core" , version.ref = "camera" }
+cameraxCamera2 = { module = "androidx.camera:camera-camera2" , version.ref = "camera" }
+cameraxLifecycle = { module = "androidx.camera:camera-lifecycle" , version.ref = "camera" }
+cameraxView = { module = "androidx.camera:camera-view" , version.ref = "camera" }
+
+
+# compose
+#androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "1.8.0" }
+#androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "2024.04.01" }
+#androidx-ui = { group = "androidx.compose.ui", name = "ui" }
+#androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+#androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+#androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+#androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+#androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+#androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+#androidx-runtime = { group = "androidx.compose.runtime", name = "runtime", version.ref = "1.8.3" }
+
+# 常用第三方库
+okhttp = { module = "com.squareup.okhttp3:okhttp" , version.ref = "okhttp" }
+okhttpLog = { module = "com.squareup.okhttp3:logging-interceptor" , version.ref = "okhttp"}
+volley = { module = "com.android.volley:volley" , version = "1.2.1" }
+retrofit = { module = "com.squareup.retrofit2:retrofit" , version.ref = "retrofit" }
+retrofitConverterGson = { module = "com.squareup.retrofit2:converter-gson" , version.ref = "retrofit" }
+retrofitAdapterRxjava = { module = "com.squareup.retrofit2:adapter-rxjava2" , version.ref = "retrofit"}
+glide = { module = "com.github.bumptech.glide:glide" , version.ref = "glide"}
+glideCompiler = { module = "com.github.bumptech.glide:compiler" , version.ref = "glide"}
+rxjava2 = { module = "io.reactivex.rxjava2:rxjava" , version = "2.2.21" }
+rxjava2Android = { module = "io.reactivex.rxjava2:rxandroid" , version = "2.1.1"}
+gson = { module = "com.google.code.gson:gson" , version = "2.10.1"}
+eventbus = { module = "org.greenrobot:eventbus" , version = "3.1.1"}
+leakcanary = { module = "com.squareup.leakcanary:leakcanary-android-no-op" , version = "1.5.4" }
+leakcanaryDebug = { module = "com.squareup.leakcanary:leakcanary-android" , version = "1.5.4" }
+greendao = { module = "org.greenrobot:greendao" , version = "3.2.2" }
+router = { module = "com.sankuai.waimai.router:router" , version = "1.2.0" }
+routerCompiler = { module = "com.sankuai.waimai.router:compiler" , version = "1.2.0" }
+sqlcipher = { module = "net.zetetic:android-database-sqlcipher" , version = "4.5.4"}   # 加密 SQLite 数据库
+photoview = { module = "com.github.chrisbanes.photoview:library" , version = "1.2.4"}  # 增强ImageView, 支持缩放旋转拖动
+easyFloat = { module = "com.github.princekin-f:EasyFloat" , version = "1.3.2"}  # 快速实现悬浮窗
+matisse = { module = "com.zhihu.android:matisse" , version = "0.5.3-beta3"}  # Android 图片/视频选择器
+
+# opt
+epic = { module = "me.weishu:epic", version = "0.3.6"}  # hook 框架
+lancet = { module = "me.ele:lancet-base" , version = "1.0.6" } # AOP 框架
+
+asynclayoutinflater = { module = "androidx.asynclayoutinflater:asynclayoutinflater" , version = "1.0.0" } # 异步加载复杂布局
+x2c = { module = "om.zhangyue.we:x2c-lib" , version = "1.0.6" } # 复杂xml布局直接转化为编译期代码实现, 优化xml解析为视图对象的过程
+x2cApt = { module = "com.zhangyue.we:x2c-apt" , version = "1.1.2" } # X2C APT 编译器解析工具
+
+blockcanary = { module = "com.github.markzhai:blockcanary-android" , version = "1.5.0" } # 主线程卡顿检测 仅在debug包使用, 避免 Release 版本性能损耗
+anrwatchdog = { module = "com.github.anrwatchdog:anrwatchdog" , version = "1.4.0" } # ANR检测, 仅在debug包使用, Release 版本谨慎使用
+
+
+[bundles]    # 组合依赖, 将 [libraries] 中的单个依赖库进行组合打包
+# 添加依赖 implementation libs.bundles.http  , 就会依赖了 "okhttp" , "okhttpLog", "retrofit" 组合的三个库
+http = [ "okhttp" , "okhttpLog", "retrofit"]
+
+

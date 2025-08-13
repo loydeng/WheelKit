@@ -1,0 +1,45 @@
+// 抽取各模块的共同配置信息, 相同配置可以在本gradle中统一修改, 差异项各个模块自己单独配置, 各模块引入:
+// apply from: "../common.gradle"
+
+android {
+    ndkVersion '22.1.7171670'
+
+    compileSdkVersion libs.versions.androidCompileSdk.get().toInteger()
+    buildToolsVersion libs.versions.androidBuildSdk.get()
+
+    defaultConfig {
+        minSdk    libs.versions.androidMinSdk.get().toInteger()
+        targetSdk libs.versions.androidTargetSdk.get().toInteger()
+        versionCode      libs.versions.appVersionCode.get().toInteger()
+        versionName      libs.versions.appVersionName.get()
+        testInstrumentationRunner libs.versions.test.android.runner.get()
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true   //是否代码混淆
+            multiDexEnabled true //防止方法数量超过65536导致错误
+        }
+        debug {
+            debuggable true     // 默认可调式
+            jniDebuggable true  // native 可调试
+            minifyEnabled false // 默认为 false
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+        encoding "UTF-8"
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    buildFeatures {
+        buildConfig true  // 启用 BuildConfig 生成
+    }
+}
+
+//dependencies {}

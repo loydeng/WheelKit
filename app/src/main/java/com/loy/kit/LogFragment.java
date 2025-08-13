@@ -1,4 +1,4 @@
-package com.loy.wheelkit;
+package com.loy.kit;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment;
 import com.loy.kit.log.SdkLog;
 import com.loy.kit.log.core.LoggerManager;
 import com.loy.kit.log.core.ViewPrinterProvider;
-import com.loy.wheelkit.databinding.FragmentLogBinding;
+import com.loy.app.databinding.FragmentLogBinding;
 
 public class LogFragment extends Fragment {
 

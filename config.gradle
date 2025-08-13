@@ -5,9 +5,9 @@
 ext {
     //android开发版本配置
     androidConfig = [
-            applicationId     : "com.loy.kit",
-            compileSdkVersion : 31,
-            buildToolsVersion : "31.0.0",
+            applicationId     : "com.loy.kit.app",
+            compileSdkVersion : 35,
+            buildToolsVersion : "35.0.0",
             minSdkVersion     : 21,
             targetSdkVersion  : 29,
             versionCode       : 1,
@@ -17,10 +17,10 @@ ext {
     //版本配置, 省略后缀 Version
     Versions = [
             // 插件
-            gradlePlugin                : "3.4.2",
-            kotlin                      : "1.3.72",
-            ktx                         : "1.3.2",
-            kotlinCoroutines            : "1.3.3",
+            gradlePlugin                : "8.3.0",
+            kotlin                      : "1.8.20",
+            ktx                         : "1.15.0",
+            kotlinCoroutines            : "1.8.0",
 
             // android 自带库 androidx jetpack
             junit                       : "4.12",
@@ -84,7 +84,7 @@ ext {
     ]
 
     //依赖库, 省略后缀 Library
-    Dependencies = [
+    Deps = [
             // 默认android系统库
             jUnit                                : "junit:junit:${Versions.junit}",
             testRunner                           : "androidx.test:runner:${Versions.testRunner}",

@@ -1,3 +1,73 @@
+pluginManagement {// 1. 插件仓库地址: 插件仓库需要能在Gradle配置阶段（configuration phase）被解析
+    repositories {
+
+        // 优先级1: 国内代理仓库
+        //jcenter()
+        maven { url "https://jitpack.io" }
+
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+        maven { url 'https://maven.aliyun.com/repository/public/' }
+        maven { url 'https://maven.aliyun.com/repository/google/' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter/' }
+        maven { url 'https://maven.aliyun.com/repository/central/' }
+        maven {
+            url 'http://mirrors.huaweicloud.com/repository/maven/huaweicloudsdk/'
+            allowInsecureProtocol = true  // 显式允许 HTTP
+        }
+        // 或者 企业私有插件仓库
+        // maven {
+        //     allowInsecureProtocol true
+        //     url = 'xxx'
+        //     credentials {
+        //         username "xxx"
+        //         password "xxx"
+        //     }
+        // }
+
+        // 优先级2: 官方渠道
+        gradlePluginPortal()
+
+        // 优先级3: 谷歌官方的特定厂商仓库
+        google {
+            content {
+                includeGroupByRegex("com\\.android.*")
+                includeGroupByRegex("com\\.google.*")
+                includeGroupByRegex("androidx.*")
+            }
+        }
+
+        // 优先及4: 公共仓库
+        mavenCentral()
+
+
+    }
+
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)   // FAIL_ON_PROJECT_REPOS 严格模式
+    repositories {// 2. 依赖仓库地址:  依赖仓库在任务执行阶段（execution phase）才会使用
+
+        // 1. 国内代理仓库
+        //jcenter()
+        maven { url "https://jitpack.io" }
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+        maven { url 'https://maven.aliyun.com/repository/public/' }
+        maven { url 'https://maven.aliyun.com/repository/google/' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter/' }
+        maven { url 'https://maven.aliyun.com/repository/central/' }
+        maven {
+            url 'http://mirrors.huaweicloud.com/repository/maven/huaweicloudsdk/'
+            allowInsecureProtocol = true  // 显式允许 HTTP
+        }
+
+        // 2. 谷歌仓库
+        google()
+
+        // 3. 公共仓库
+        mavenCentral()
+    }
+}
+
 rootProject.name = "WheelKit"
 include ':app'
 include ':kit'

@@ -1,4 +1,4 @@
-package com.loy.wheelkit;
+package com.loy.kit;
 
 import android.Manifest;
 import android.content.Intent;
@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.loy.kit.utils.PermissionUtil;
 import com.loy.kit.utils.ThreadUtil;
 import com.loy.kit.utils.ToastUtil;
+import com.loy.app.R;
 
 import java.util.List;
 

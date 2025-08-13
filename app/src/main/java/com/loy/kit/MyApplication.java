@@ -1,4 +1,4 @@
-package com.loy.wheelkit;
+package com.loy.kit;
 
 import com.loy.kit.base.BaseApplication;
 

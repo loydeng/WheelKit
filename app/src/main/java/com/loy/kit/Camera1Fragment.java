@@ -1,10 +1,6 @@
-package com.loy.wheelkit;
+package com.loy.kit;
 
-import android.hardware.camera2.CameraCharacteristics;
-import android.hardware.camera2.CameraManager;
-import android.hardware.camera2.params.StreamConfigurationMap;
 import android.os.Bundle;
-import android.util.AndroidException;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,9 +15,8 @@ import com.loy.kit.media.capture.camrea.CameraHelper;
 import com.loy.kit.media.capture.camrea.bean.Error;
 import com.loy.kit.media.capture.camrea.bean.Profile;
 import com.loy.kit.media.capture.camrea.bean.SensorInfo;
-import com.loy.kit.utils.ServiceManagerUtil;
-import com.loy.wheelkit.databinding.FragmentCamera1Binding;
-import com.loy.wheelkit.databinding.FragmentCamera2Binding;
+
+import com.loy.app.databinding.FragmentCamera1Binding;
 
 import java.util.List;
 
@@ -30,18 +25,19 @@ import java.util.List;
  * @tiem 2023/2/26 12:01
  * @des
  */
-public class Camera2Fragment extends Fragment implements View.OnClickListener{
-    private FragmentCamera2Binding mBinding;
+public class Camera1Fragment extends Fragment implements View.OnClickListener {
+    private FragmentCamera1Binding mBinding;
     private CameraClient cameraClient;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mBinding = FragmentCamera2Binding.inflate(inflater, container, false);
+        mBinding = FragmentCamera1Binding.inflate(inflater, container, false);
         mBinding.capture.setOnClickListener(this);
         mBinding.record.setOnClickListener(this);
         mBinding.switcher.setOnClickListener(this);
-        cameraClient = new CameraClient(this.getContext(), CameraClient.API.Camera2);
+
+        cameraClient = new CameraClient(this.getContext(), CameraClient.API.Camera);
         cameraClient.querySensorInfo(new CameraClient.Callback<List<SensorInfo>>() {
             @Override
             public void onSuccess(List<SensorInfo> result) {
@@ -62,6 +58,7 @@ public class Camera2Fragment extends Fragment implements View.OnClickListener{
         });
         return mBinding.getRoot();
     }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
